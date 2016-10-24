@@ -1,0 +1,1 @@
+json.array! @character_templates, partial: 'character_templates/character_template', as: :character_template

@@ -1,0 +1,1 @@
+json.partial! "character_templates/character_template", character_template: @character_template

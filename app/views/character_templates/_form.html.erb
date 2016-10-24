@@ -1,0 +1,417 @@
+<%= form_for(character_template) do |f| %>
+  <% if character_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(character_template.errors.count, "error") %> prohibited this character_template from being saved:</h2>
+
+      <ul>
+      <% character_template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ability_strength_value %>
+    <%= f.number_field :ability_strength_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_strength_mod %>
+    <%= f.number_field :ability_strength_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_dexterity_value %>
+    <%= f.number_field :ability_dexterity_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_dexterity_mod %>
+    <%= f.number_field :ability_dexterity_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_constitution_value %>
+    <%= f.number_field :ability_constitution_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_constitution_mod %>
+    <%= f.number_field :ability_constitution_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_intelligence_value %>
+    <%= f.number_field :ability_intelligence_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_intelligence_mod %>
+    <%= f.number_field :ability_intelligence_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_wisdom_value %>
+    <%= f.number_field :ability_wisdom_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_wisdom_mod %>
+    <%= f.number_field :ability_wisdom_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_charisma_value %>
+    <%= f.number_field :ability_charisma_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ability_charisma_mod %>
+    <%= f.number_field :ability_charisma_mod %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trait_personality %>
+    <%= f.text_area :trait_personality %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trait_ideals %>
+    <%= f.text_area :trait_ideals %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trait_bonds %>
+    <%= f.text_area :trait_bonds %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trait_flaws %>
+    <%= f.text_area :trait_flaws %>
+  </div>
+
+  <div class="field">
+    <%= f.label :character_name %>
+    <%= f.text_field :character_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :character_class %>
+    <%= f.text_field :character_class %>
+  </div>
+
+  <div class="field">
+    <%= f.label :background %>
+    <%= f.text_field :background %>
+  </div>
+
+  <div class="field">
+    <%= f.label :race %>
+    <%= f.text_field :race %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alignment %>
+    <%= f.text_field :alignment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passive_perception %>
+    <%= f.number_field :passive_perception %>
+  </div>
+
+  <div class="field">
+    <%= f.label :armor_class %>
+    <%= f.number_field :armor_class %>
+  </div>
+
+  <div class="field">
+    <%= f.label :initiative %>
+    <%= f.number_field :initiative %>
+  </div>
+
+  <div class="field">
+    <%= f.label :speed %>
+    <%= f.number_field :speed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :other_proficiencies_languages %>
+    <%= f.text_area :other_proficiencies_languages %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hit_point_max %>
+    <%= f.number_field :hit_point_max %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hit_dice %>
+    <%= f.number_field :hit_dice %>
+  </div>
+
+  <div class="field">
+    <%= f.label :features_traits %>
+    <%= f.text_area :features_traits %>
+  </div>
+
+  <div class="field">
+    <%= f.label :proficiency_bonus %>
+    <%= f.text_field :proficiency_bonus %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_strength_value %>
+    <%= f.number_field :saving_throw_strength_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_strength_bool %>
+    <%= f.check_box :saving_throw_strength_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_dexterity_value %>
+    <%= f.number_field :saving_throw_dexterity_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_dexterity_bool %>
+    <%= f.check_box :saving_throw_dexterity_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_constitution_value %>
+    <%= f.number_field :saving_throw_constitution_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_constitution_bool %>
+    <%= f.check_box :saving_throw_constitution_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_intelligence_value %>
+    <%= f.number_field :saving_throw_intelligence_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_intelligence_bool %>
+    <%= f.check_box :saving_throw_intelligence_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_wisdom_value %>
+    <%= f.number_field :saving_throw_wisdom_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_wisdom_bool %>
+    <%= f.check_box :saving_throw_wisdom_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_charisma_value %>
+    <%= f.number_field :saving_throw_charisma_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saving_throw_charisma_bool %>
+    <%= f.check_box :saving_throw_charisma_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_acrobatics_value %>
+    <%= f.number_field :skills_acrobatics_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_acrobatics_bool %>
+    <%= f.check_box :skills_acrobatics_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_animal_handling_value %>
+    <%= f.number_field :skills_animal_handling_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_animal_handling_bool %>
+    <%= f.check_box :skills_animal_handling_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_arcana_value %>
+    <%= f.number_field :skills_arcana_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_arcana_bool %>
+    <%= f.check_box :skills_arcana_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_athletics_value %>
+    <%= f.number_field :skills_athletics_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_athletics_bool %>
+    <%= f.check_box :skills_athletics_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_deception_value %>
+    <%= f.number_field :skills_deception_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_deception_bool %>
+    <%= f.check_box :skills_deception_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_history_value %>
+    <%= f.number_field :skills_history_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_history_bool %>
+    <%= f.check_box :skills_history_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_insight_value %>
+    <%= f.number_field :skills_insight_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_insight_bool %>
+    <%= f.check_box :skills_insight_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_intimidation_value %>
+    <%= f.number_field :skills_intimidation_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_intimidation_bool %>
+    <%= f.check_box :skills_intimidation_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_investigation_value %>
+    <%= f.number_field :skills_investigation_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_investigation_bool %>
+    <%= f.check_box :skills_investigation_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_medicine_value %>
+    <%= f.number_field :skills_medicine_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_medicine_bool %>
+    <%= f.check_box :skills_medicine_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_nature_value %>
+    <%= f.number_field :skills_nature_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_nature_bool %>
+    <%= f.check_box :skills_nature_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_perception_value %>
+    <%= f.number_field :skills_perception_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_perception_bool %>
+    <%= f.check_box :skills_perception_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_performance_value %>
+    <%= f.number_field :skills_performance_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_performance_bool %>
+    <%= f.check_box :skills_performance_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_persuasion_value %>
+    <%= f.number_field :skills_persuasion_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_persuasion_bool %>
+    <%= f.check_box :skills_persuasion_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_religion_value %>
+    <%= f.number_field :skills_religion_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_religion_bool %>
+    <%= f.check_box :skills_religion_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_sleight_of_hand_value %>
+    <%= f.number_field :skills_sleight_of_hand_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_sleight_of_hand_bool %>
+    <%= f.check_box :skills_sleight_of_hand_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_stealth_value %>
+    <%= f.number_field :skills_stealth_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_stealth_bool %>
+    <%= f.check_box :skills_stealth_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_survival_value %>
+    <%= f.number_field :skills_survival_value %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills_survival_bool %>
+    <%= f.check_box :skills_survival_bool %>
+  </div>
+
+  <div class="field">
+    <%= f.label :private %>
+    <%= f.check_box :private %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
