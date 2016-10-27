@@ -1,0 +1,2 @@
+class CharacterTemplateBase < ApplicationRecord
+end

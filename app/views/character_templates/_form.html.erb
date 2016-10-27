@@ -1,10 +1,10 @@
-<%= form_for(character_template) do |f| %>
-  <% if character_template.errors.any? %>
+<%= form_for(character_template_base, character_templates_path) do |f| %>
+  <% if character_template_base.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(character_template.errors.count, "error") %> prohibited this character_template from being saved:</h2>
+      <h2><%= pluralize(character_template_base.errors.count, "error") %> prohibited this character_template_base from being saved:</h2>
 
       <ul>
-      <% character_template.errors.full_messages.each do |message| %>
+      <% character_template_base.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

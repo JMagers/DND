@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024063501) do
+ActiveRecord::Schema.define(version: 20161027055040) do
 
-  create_table "character_templates", force: :cascade do |t|
+  create_table "character_template_bases", force: :cascade do |t|
     t.integer  "ability_strength_value"
     t.integer  "ability_strength_mod"
     t.integer  "ability_dexterity_value"
@@ -95,6 +95,31 @@ ActiveRecord::Schema.define(version: 20161024063501) do
     t.integer  "user_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "character_templates", force: :cascade do |t|
+    t.text     "abilities"
+    t.text     "traits"
+    t.string   "character_name"
+    t.string   "character_class"
+    t.string   "background"
+    t.string   "race"
+    t.string   "alignment"
+    t.integer  "passive_perception"
+    t.integer  "armor_class"
+    t.integer  "initiative"
+    t.integer  "speed"
+    t.text     "other_proficiencies_languages"
+    t.integer  "hit_point_max"
+    t.integer  "hit_dice"
+    t.text     "features_traits"
+    t.string   "proficiency_bonus"
+    t.text     "saving_throws"
+    t.text     "skills"
+    t.boolean  "private"
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
 end

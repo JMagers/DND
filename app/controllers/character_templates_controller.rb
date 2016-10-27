@@ -14,7 +14,7 @@ class CharacterTemplatesController < ApplicationController
 
   # GET /character_templates/new
   def new
-    @character_template = CharacterTemplate.new
+    @character_template_base = CharacterTemplateBase.new
   end
 
   # GET /character_templates/1/edit
@@ -24,7 +24,147 @@ class CharacterTemplatesController < ApplicationController
   # POST /character_templates
   # POST /character_templates.json
   def create
-    @character_template = CharacterTemplate.new(character_template_params)
+    @character_template_base = CharacterTemplateBase.new(character_template_params)
+    base_attrs = character_template_base.attributes
+    character_template_attrs = {
+      abilities: {
+        strength: {
+          value: base_attrs[:ability_strength_value],
+          mod: base_attrs[:ability_strength_mod]
+        },
+        dexterity: {
+          value: base_attrs[:ability_dexterity_value],
+          mod: base_attrs[:ability_dexterity_mod]
+        },
+        constitution: {
+          value: base_attrs[:ability_constitution_value],
+          mod: base_attrs[:ability_constitution_mod]
+        },
+        intelligence: {
+          value: base_attrs[:ability_intelligence_value],
+          base: base_attrs[:ability_intelligence_mod]
+        },
+        wisdom: {
+          value: base_attrs[:ability_wisdom_value],
+          mod: base_attrs[:ability_wisdom_mod]
+        },
+        charisma: {
+          value: base_attrs[:ability_charisma_value],
+          mod: base_attrs[:ability_charisma_mod]
+        }
+      },
+
+      traits: {
+        personality: base_attrs[:trait_personality],
+        ideals: base_attrs[:trait_ideals],
+        bonds: base_attrs[:trait_bonds],
+        flaws: base_attrs[:trait_flaws]
+      },
+
+      saving_throws: {
+        strength: {
+          value: base_attrs[:saving_throw_strength_value],
+          bool: base_attrs[:saving_throw_strength_bool]
+        },
+        dexterity: {
+          value: base_attrs[:saving_throw_dexterity_value],
+          bool: base_attrs[:saving_throw_dexterity_bool]
+        },
+        constitution: {
+          value: base_attrs[:saving_throw_constitution_value],
+          bool: base_attrs[:saving_throw_constitution_bool]
+        },
+        intelligence: {
+          value: base_attrs[:saving_throw_intelligence_value],
+          bool: base_attrs[:saving_throw_intelligence_bool]
+        },
+        wisdom: {
+          value: base_attrs[:saving_throw_wisdom_value],
+          bool: base_attrs[:saving_throw_wisdom_bool]
+        },
+        charisma: {
+        value: base_attrs[:saving_throw_charisma_value],
+        bool: base_attrs[:saving_throw_charisma_bool]
+        }
+      },
+
+      skills: {
+        acrobatics: {
+          value: base_attr[:skills_acrobatics_value],
+          bool: base_attr[:skills_acrobatics_bool]
+        },
+        animal_handling: {
+          value: base_attr[:skills_animal_handling_value],
+          bool: base_attr[:skills_animal_handling_bool]
+        },
+        arcana: {
+          value: base_attr[:skills_arcana_value],
+          bool: base_attr[:skills_arcana_bool]
+        },
+        athletics: {
+          value: base_attr[:skills_athletics_value],
+          bool: base_attr[:skills_athletics_bool]
+        },
+        deception: {
+          value: base_attr[:skills_deception_value],
+          bool: base_attr[:skills_deception_bool]
+        },
+        history: {
+          value: base_attr[:skills_history_value],
+          bool: base_attr[:skills_history_bool]
+        },
+        insight: {
+          value: base_attr[:skills_insight_value],
+          bool: base_attr[:skills_insight_bool]
+        },
+        intimidation: {
+          value: base_attr[:skills_intimidation_value],
+          bool: base_attr[:skills_intimidation_bool]
+        },
+        investigation: {
+          value: base_attr[:skills_investigation_value],
+          bool: base_attr[:skills_investigation_bool]
+        },
+        medicine: {
+          value: base_attr[:skills_medicine_value],
+          bool: base_attr[:skills_medicine_bool]
+        },
+        nature: {
+          value: base_attr[:skills_nature_value],
+          bool: base_attr[:skills_nature_bool]
+        },
+        perception: {
+          value: base_attr[:skills_perception_value],
+          bool: base_attr[:skills_perception_bool]
+        },
+        performance: {
+          value: base_attr[:skills_performance_value],
+          bool: base_attr[:skills_performance_bool]
+        },
+        persuasion: {
+          value: base_attr[:skills_persuasion_value],
+          bool: base_attr[:skills_persuasion_bool]
+        },
+        religion: {
+          value: base_attr[:skills_religion_value],
+          bool: base_attr[:skills_religion_bool]
+        },
+        sleight_of_hand: {
+          value: base_attr[:skills_sleight_of_hand_value],
+          bool: base_attr[:skills_sleight_of_hand_bool]
+        },
+        stealth: {
+          value: base_attr[:skills_stealth_value],
+          bool: base_attr[:skills_stealth_bool]
+        },
+        survival: {
+          value: base_attr[:skills_survival_value],
+          bool: base_attr[:skills_survival_bool]
+        }
+      }
+    }
+    
+    @character_template = CharacterTemplate.new(character_template_attrs)
 
     respond_to do |format|
       if @character_template.save
