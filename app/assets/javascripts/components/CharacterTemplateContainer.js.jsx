@@ -7,10 +7,6 @@ var CharacterTemplateContainer = React.createClass({
     return {data: {}};
   },
 
-  formatData: function(data) {
-    return formatTemplateData(data);
-  },
-
   loadDataFromServer: function() {
     url = this.url;
     $.ajax({
@@ -18,7 +14,7 @@ var CharacterTemplateContainer = React.createClass({
       dataType: 'json',
       cache: false,
       success: function (data) {
-        this.setState({data: data});
+        this.setState({data: formatTemplateData(data)});
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(url, status, err.toString());
@@ -27,14 +23,15 @@ var CharacterTemplateContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    loadDataFromServal();  // make sure to set interval later!!!
+    this.loadDataFromServer();
+    setInterval(this.loadDataFromServer, 4000);
   },
 
   render: function() {
     return (
       <div>
         <h1>Here is Data from server</h1>
-        <p>{this.state.data}</p>
+        <p>{JSON.stringify(this.state.data)}</p>
         {/*<CharacterTemplate data={this.state.data} />*/}
       </div>
     );

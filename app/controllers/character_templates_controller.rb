@@ -10,6 +10,7 @@ class CharacterTemplatesController < ApplicationController
   # GET /character_templates/1
   # GET /character_templates/1.json
   def show
+    @json_url = character_template_path(@character_template, format: :json)
   end
 
   # GET /character_templates/new

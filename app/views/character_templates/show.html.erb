@@ -400,5 +400,7 @@
   <%= @character_template.user_id %>
 </p>
 
+<<%= react_component('CharacterTemplateContainer', url: @json_url) %>
+
 <%= link_to 'Edit', edit_character_template_path(@character_template) %> |
 <%= link_to 'Back', character_templates_path %>
