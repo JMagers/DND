@@ -10,7 +10,7 @@ var CharacterTemplate = React.createClass({
         <h1>JSON object</h1>
         <p>{JSON.stringify(data)}</p>
         <Abilities data={data.abilities} />
-        {/*<Traits data={data.traits} />*/}
+        <Traits data={data.traits} />
         {/*<SavingThrows data={data.saving_throws} />*/}
         {/*<Skills data={data.skills} />*/}
         {/*Other data*/}
