@@ -8,15 +8,20 @@ var CharacterTemplateContainer = React.createClass({
   },
 
   loadDataFromServer: function() {
-    url = this.url;
+    var url = this.props.url;
+    var oldData = this.state.data;
     $.ajax({
       url: url,
       dataType: 'json',
       cache: false,
-      success: function (data) {
-        this.setState({data: formatTemplateData(data)});
+      success: function(data) {
+        // Only update this.state.data if newData is different than oldData
+        var newData = formatTemplateData(data);
+        if (oldData === null || JSON.stringify(newData) != JSON.stringify(oldData)) {
+          this.setState({data: newData});
+        }
       }.bind(this),
-      error: function (xhr, status, err) {
+      error: function(xhr, status, err) {
         console.error(url, status, err.toString());
       }
     });

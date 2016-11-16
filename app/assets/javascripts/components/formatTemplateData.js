@@ -1,5 +1,6 @@
+// Note: data parameter will be modified
 function formatTemplateData(data) {
-  var new_data = {
+  var newData = {
     abilities: {
       strength: {
         value: data.ability_strength_value,
@@ -137,75 +138,81 @@ function formatTemplateData(data) {
     }
   };
 
-  modified_data = data;
-  delete modified_data.ability_strength_value
-  delete modified_data.ability_strength_mod
-  delete modified_data.ability_dexterity_value
-  delete modified_data.ability_dexterity_mod
-  delete modified_data.ability_constitution_value
-  delete modified_data.ability_constitution_mod
-  delete modified_data.ability_intelligence_value
-  delete modified_data.ability_intelligence_mod
-  delete modified_data.ability_wisdom_value
-  delete modified_data.ability_wisdom_mod
-  delete modified_data.ability_charisma_value
-  delete modified_data.ability_charisma_mod
-  delete modified_data.trait_personality;
-  delete modified_data.trait_ideals;
-  delete modified_data.trait_bonds;
-  delete modified_data.trait_flaws;
-  delete modified_data.saving_throw_strength_value;
-  delete modified_data.saving_throw_strength_bool;
-  delete modified_data.saving_throw_dexterity_value;
-  delete modified_data.saving_throw_dexterity_bool;
-  delete modified_data.saving_throw_constitution_value;
-  delete modified_data.saving_throw_constitution_bool;
-  delete modified_data.saving_throw_intelligence_value;
-  delete modified_data.saving_throw_intelligence_bool;
-  delete modified_data.saving_throw_wisdom_value;
-  delete modified_data.saving_throw_wisdom_bool;
-  delete modified_data.saving_throw_charisma_value;
-  delete modified_data.saving_throw_charisma_bool;
-  delete modified_data.skills_acrobatics_value;
-  delete modified_data.skills_acrobatics_bool;
-  delete modified_data.skills_animal_handling_value;
-  delete modified_data.skills_animal_handling_bool;
-  delete modified_data.skills_arcana_value;
-  delete modified_data.skills_arcana_bool;
-  delete modified_data.skills_athletics_value;
-  delete modified_data.skills_athletics_bool;
-  delete modified_data.skills_deception_value;
-  delete modified_data.skills_deception_bool;
-  delete modified_data.skills_history_value;
-  delete modified_data.skills_history_bool;
-  delete modified_data.skills_insight_value;
-  delete modified_data.skills_insight_bool;
-  delete modified_data.skills_intimidation_value;
-  delete modified_data.skills_intimidation_bool;
-  delete modified_data.skills_investigation_value;
-  delete modified_data.skills_investigation_bool;
-  delete modified_data.skills_medicine_value;
-  delete modified_data.skills_medicine_bool;
-  delete modified_data.skills_nature_value;
-  delete modified_data.skills_nature_bool;
-  delete modified_data.skills_perception_value;
-  delete modified_data.skills_perception_bool;
-  delete modified_data.skills_performance_value;
-  delete modified_data.skills_performance_bool;
-  delete modified_data.skills_persuasion_value;
-  delete modified_data.skills_persuasion_bool;
-  delete modified_data.skills_religion_value;
-  delete modified_data.skills_religion_bool;
-  delete modified_data.skills_sleight_of_hand_value;
-  delete modified_data.skills_sleight_of_hand_bool;
-  delete modified_data.skills_stealth_value;
-  delete modified_data.skills_stealth_bool;
-  delete modified_data.skills_survival_value;
-  delete modified_data.skills_survival_bool;
+  var deleteList = [
+    'ability_strength_value',
+    'ability_strength_mod',
+    'ability_dexterity_value',
+    'ability_dexterity_mod',
+    'ability_constitution_value',
+    'ability_constitution_mod',
+    'ability_intelligence_value',
+    'ability_intelligence_mod',
+    'ability_wisdom_value',
+    'ability_wisdom_mod',
+    'ability_charisma_value',
+    'ability_charisma_mod',
+    'trait_personality',
+    'trait_ideals',
+    'trait_bonds',
+    'trait_flaws',
+    'saving_throw_strength_value',
+    'saving_throw_strength_bool',
+    'saving_throw_dexterity_value',
+    'saving_throw_dexterity_bool',
+    'saving_throw_constitution_value',
+    'saving_throw_constitution_bool',
+    'saving_throw_intelligence_value',
+    'saving_throw_intelligence_bool',
+    'saving_throw_wisdom_value',
+    'saving_throw_wisdom_bool',
+    'saving_throw_charisma_value',
+    'saving_throw_charisma_bool',
+    'skills_acrobatics_value',
+    'skills_acrobatics_bool',
+    'skills_animal_handling_value',
+    'skills_animal_handling_bool',
+    'skills_arcana_value',
+    'skills_arcana_bool',
+    'skills_athletics_value',
+    'skills_athletics_bool',
+    'skills_deception_value',
+    'skills_deception_bool',
+    'skills_history_value',
+    'skills_history_bool',
+    'skills_insight_value',
+    'skills_insight_bool',
+    'skills_intimidation_value',
+    'skills_intimidation_bool',
+    'skills_investigation_value',
+    'skills_investigation_bool',
+    'skills_medicine_value',
+    'skills_medicine_bool',
+    'skills_nature_value',
+    'skills_nature_bool',
+    'skills_perception_value',
+    'skills_perception_bool',
+    'skills_performance_value',
+    'skills_performance_bool',
+    'skills_persuasion_value',
+    'skills_persuasion_bool',
+    'skills_religion_value',
+    'skills_religion_bool',
+    'skills_sleight_of_hand_value',
+    'skills_sleight_of_hand_bool',
+    'skills_stealth_value',
+    'skills_stealth_bool',
+    'skills_survival_value',
+    'skills_survival_bool'
+  ]
 
-  for (var attr in modified_data) {
-    new_data[attr] = modified_data[attr];
+  for (let i in deleteList) {
+    var attrName = deleteList[i];
+    delete data[attrName];
   }
 
-  return new_data;
+  for (let attr in data) {
+    newData[attr] = data[attr];
+  }
+
+  return newData;
 }
