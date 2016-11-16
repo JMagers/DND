@@ -5,17 +5,17 @@ var Traits = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var trait_order = [
+    var traitOrder = [
       'personality',
       'ideals',
       'bonds',
       'flaws'
     ];
-    var traits = trait_order.map(function(trait_name) {
-      var trait_value = data[trait_name];
+    var traits = traitOrder.map(function(traitName) {
+      var traitValue = data[traitName];
       return (
         <li>
-          <Trait name={trait_name} value={trait_value} />
+          <Trait name={traitName} value={traitValue} />
         </li>
       );
     });

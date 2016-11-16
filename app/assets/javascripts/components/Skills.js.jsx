@@ -5,7 +5,7 @@ var Skills = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var skill_order = [
+    var skillOrder = [
       'acrobatics',
       'animal_handling',
       'arcana',
@@ -25,11 +25,11 @@ var Skills = React.createClass({
       'stealth',
       'survival'
     ];
-    var skills = skill_order.map(function(skill_name) {
-      var skill_attributes = data[skill_name];
+    var skills = skillOrder.map(function(skillName) {
+      var skillAttribute = data[skillName];
       return (
         <li>
-          <Skill name={skill_name} attributes={skill_attributes} />
+          <Skill name={skillName} attributes={skillAttribute} />
         </li>
       );
     });

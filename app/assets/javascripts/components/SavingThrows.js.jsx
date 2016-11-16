@@ -5,7 +5,7 @@ var SavingThrows = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var saving_throw_order = [
+    var savingThrowOrder = [
       'strength',
       'dexterity',
       'constitution',
@@ -13,11 +13,11 @@ var SavingThrows = React.createClass({
       'wisdom',
       'charisma'
     ];
-    var savingThrows = saving_throw_order.map(function(saving_throw_name) {
-      var saving_throw_attributes = data[saving_throw_name];
+    var savingThrows = savingThrowOrder.map(function(savingThrowName) {
+      var savingThrowAttributes = data[savingThrowName];
       return (
         <li>
-          <SavingThrow name={saving_throw_name} attributes={saving_throw_attributes} />
+          <SavingThrow name={savingThrowName} attributes={savingThrowAttributes} />
         </li>
       );
     });

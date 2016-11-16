@@ -5,7 +5,7 @@ var Abilities = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var ability_order = [
+    var abilityOrder = [
       'strength',
       'dexterity',
       'constitution',
@@ -13,11 +13,11 @@ var Abilities = React.createClass({
       'wisdom',
       'charisma'
     ];
-    var abilities = ability_order.map(function(ability_name) {
-      var ability_attributes = data[ability_name];
+    var abilities = abilityOrder.map(function(abilityName) {
+      var abilityAttributes = data[abilityName];
       return (
         <li>
-          <Ability name={ability_name} attributes={ability_attributes} />
+          <Ability name={abilityName} attributes={abilityAttributes} />
         </li>
       );
     });
