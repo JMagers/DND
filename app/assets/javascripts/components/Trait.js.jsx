@@ -5,9 +5,10 @@ var Trait = React.createClass({
   },
 
   render: function() {
+    var name = formatVarName(this.props.name);
     return (
       <div>
-        <h5>{this.props.name}</h5>
+        <h5>{name}</h5>
         <p>{this.props.value}</p>
       </div>
     );
