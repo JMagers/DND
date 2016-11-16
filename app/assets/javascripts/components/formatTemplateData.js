@@ -15,7 +15,7 @@ function formatTemplateData(data) {
       },
       intelligence: {
         value: data.ability_intelligence_value,
-        base: data.ability_intelligence_mod
+        mod: data.ability_intelligence_mod
       },
       wisdom: {
         value: data.ability_wisdom_value,

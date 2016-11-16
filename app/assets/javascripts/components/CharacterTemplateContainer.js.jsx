@@ -4,7 +4,7 @@ var CharacterTemplateContainer = React.createClass({
   },
 
   getInitialState: function() {
-    return {data: {}};
+    return {data: null};
   },
 
   loadDataFromServer: function() {
@@ -28,11 +28,15 @@ var CharacterTemplateContainer = React.createClass({
   },
 
   render: function() {
+    var characterTemplate;
+    if (this.state.data == null) {
+      characterTemplate = <h6>Loading Character Template Data...</h6>;
+    } else {
+      characterTemplate = <CharacterTemplate data={this.state.data} />;
+    }
     return (
       <div>
-        <h1>Here is Data from server</h1>
-        <p>{JSON.stringify(this.state.data)}</p>
-        {/*<CharacterTemplate data={this.state.data} />*/}
+        {characterTemplate}
       </div>
     );
   }
