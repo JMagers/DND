@@ -12,7 +12,7 @@ var CharacterTemplate = React.createClass({
         <Abilities data={data.abilities} />
         <Traits data={data.traits} />
         <SavingThrows data={data.saving_throws} />
-        {/*<Skills data={data.skills} />*/}
+        <Skills data={data.skills} />
         {/*Other data*/}
       </div>
     );
