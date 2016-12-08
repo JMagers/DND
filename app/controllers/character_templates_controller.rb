@@ -15,7 +15,16 @@ class CharacterTemplatesController < ApplicationController
 
   # GET /character_templates/new
   def new
-    @character_template = CharacterTemplate.new
+    forked_from = params[:forked_from]
+    if CharacterTemplate.exists?(forked_from)
+      original_template = CharacterTemplate.find(forked_from)
+    end
+    if original_template != nil
+      @character_template = original_template.clone
+      @character_template.forked_from = forked_from
+    else
+      @character_template = CharacterTemplate.new()
+    end
   end
 
   # GET /character_templates/1/edit
