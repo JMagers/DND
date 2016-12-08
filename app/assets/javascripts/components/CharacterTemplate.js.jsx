@@ -9,12 +9,8 @@ var CharacterTemplate = React.createClass({
       <div>
         <h1>JSON object</h1>
         <p>{JSON.stringify(data)}</p>
-        <Abilities data={data.abilities} />
-        <Traits data={data.traits} />
-        <SavingThrows data={data.saving_throws} />
-        <Skills data={data.skills} />
-        <h1>Other Data</h1>
         <ul>
+          <li><strong>Forked From: </strong>{data.forked_from}</li>
           <li><strong>Name: </strong>{data.character_name}</li>
           <li><strong>Class: </strong>{data.character_class}</li>
           <li><strong>Background: </strong>{data.background}</li>
@@ -30,6 +26,10 @@ var CharacterTemplate = React.createClass({
           <li><strong>Features/Traits: </strong>{data.features_traits}</li>
           <li><strong>Proficiency Bonus: </strong>{data.proficiency_bonus}</li>
         </ul>
+        <Abilities data={data.abilities} />
+        <Traits data={data.traits} />
+        <SavingThrows data={data.saving_throws} />
+        <Skills data={data.skills} />
       </div>
     );
   }
