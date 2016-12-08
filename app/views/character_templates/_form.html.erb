@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% if CharacterTemplate.count > 0 %>
+    <%= link_to "Fork From Random Template", new_character_template_path(forked_from: 'random') %>
+  <% end %>
+
   <div class="field">
     <%= f.label :forked_from %>
     <%= f.number_field :forked_from %>
