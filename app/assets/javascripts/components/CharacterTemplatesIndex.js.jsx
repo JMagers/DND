@@ -30,6 +30,7 @@ var CharacterTemplatesIndex = React.createClass({
     return (
       <div>
         <h1>Character Templates</h1>
+        <CharacterTemplatesListContainer url={jsonUrl} params={params} />
       </div>
     );
   }

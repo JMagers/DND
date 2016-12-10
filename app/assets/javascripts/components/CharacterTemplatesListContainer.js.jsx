@@ -1,22 +1,38 @@
-var CharacterTemplateContainer = React.createClass({
+var CharacterTemplatesListContainer = React.createClass({
   propTypes: {
-    url: React.PropTypes.string.isRequired
+    url: React.PropTypes.string.isRequired,
+    params: React.PropTypes.object
   },
 
-  getInitialState: function() {
+  getDefaultProps: function () {
+    return {params: {}};
+  },
+
+  getInitialState: function () {
     return {data: null};
   },
 
-  loadDataFromServer: function() {
+  loadDataFromServer: function () {
     var url = this.props.url;
     var oldData = this.state.data;
+    var params = this.props.params;
+    // Add parameters to url
+    url += '?';
+    var i = 0;
+    for (param in params) {
+      if (i > 0) {
+        url += '&'
+      }
+      url += param + '=' + params[param]; 
+      i++;
+    }
     $.ajax({
       url: url,
       dataType: 'json',
       cache: false,
       success: function(data) {
         // Only update this.state.data if newData is different than oldData
-        var newData = formatTemplateData(data);
+        var newData = data;
         if (oldData === null || JSON.stringify(newData) != JSON.stringify(oldData)) {
           this.setState({data: newData});
         }
@@ -32,16 +48,16 @@ var CharacterTemplateContainer = React.createClass({
     setInterval(this.loadDataFromServer, 2000);
   },
 
-  render: function() {
-    var characterTemplate;
+  render: function () {
+    var characterTemplatesList;
     if (this.state.data == null) {
-      characterTemplate = <h6>Loading Character Template Data...</h6>;
+      characterTemplatesList = <h6>Loading Character Templates...</h6>;
     } else {
-      characterTemplate = <CharacterTemplate data={this.state.data} />;
+      characterTemplatesList = <CharacterTemplatesList data={this.state.data} />;
     }
     return (
       <div>
-        {characterTemplate}
+        {characterTemplatesList}
       </div>
     );
   }
