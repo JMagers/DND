@@ -22,7 +22,7 @@ class CharacterTemplatesController < ApplicationController
       original_template = CharacterTemplate.find(forked_from)
     end
     if original_template != nil
-      @character_template = original_template.clone
+      @character_template = original_template.dup
       @character_template.forked_from = original_template.id
     else
       @character_template = CharacterTemplate.new()
@@ -40,6 +40,13 @@ class CharacterTemplatesController < ApplicationController
 
     respond_to do |format|
       if @character_template.save
+        # Increment original character_template's num_forks
+        forked_from = @character_template.forked_from
+        if forked_from != nil && CharacterTemplate.exists?(forked_from)
+          original_template = CharacterTemplate.find(forked_from)
+          original_template.num_forks += 1
+          original_template.save
+        end
         format.html { redirect_to @character_template, notice: 'Character template was successfully created.' }
         format.json { render :show, status: :created, location: @character_template }
       else

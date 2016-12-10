@@ -11,6 +11,7 @@ var CharacterTemplate = React.createClass({
         <p>{JSON.stringify(data)}</p>
         <ul>
           <li><strong>Forked From: </strong>{data.forked_from}</li>
+          <li><strong>Forks: </strong>{data.num_forks}</li>
           <li><strong>Name: </strong>{data.character_name}</li>
           <li><strong>Class: </strong>{data.character_class}</li>
           <li><strong>Background: </strong>{data.background}</li>

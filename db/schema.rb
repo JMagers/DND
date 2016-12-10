@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208051634) do
+ActiveRecord::Schema.define(version: 20161210051237) do
 
   create_table "character_templates", force: :cascade do |t|
     t.integer  "ability_strength_value"
@@ -93,9 +93,10 @@ ActiveRecord::Schema.define(version: 20161208051634) do
     t.boolean  "skills_survival_bool"
     t.boolean  "private"
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "forked_from"
+    t.integer  "num_forks",                       default: 0
   end
 
 end
