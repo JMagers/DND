@@ -12,10 +12,10 @@ var CharacterTemplatesListContainer = React.createClass({
     return {data: null};
   },
 
-  loadDataFromServer: function () {
-    var url = this.props.url;
+  loadDataFromServer: function (props) {
+    var url = props.url;
     var oldData = this.state.data;
-    var params = this.props.params;
+    var params = props.params;
     // Add parameters to url
     url += '?';
     var i = 0;
@@ -44,9 +44,17 @@ var CharacterTemplatesListContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    this.loadDataFromServer();
-    setInterval(this.loadDataFromServer, 2000);
+    this.loadDataFromServer(this.props);
+    setInterval(this.loadDataFromServer(this.props), 2000);
   },
+
+  componentWillReceiveProps: function (nextProps) {
+    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
+      return;
+    }
+    this.loadDataFromServer(nextProps);
+  },
+  
 
   render: function () {
     var characterTemplatesList;

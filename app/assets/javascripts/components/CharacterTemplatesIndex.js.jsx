@@ -30,6 +30,10 @@ var CharacterTemplatesIndex = React.createClass({
     return (
       <div>
         <h1>Character Templates</h1>
+        <h6>Sort by:</h6>
+        <a className="button" id="most-recent-button" onClick={this.handleClick}>Most Recent</a>
+        <a className="button" id="character-name-button" onClick={this.handleClick}>Character Name</a>
+        <a className="button" id="num-forks-button" onClick={this.handleClick}>Number of Forks</a>
         <CharacterTemplatesListContainer url={jsonUrl} params={params} />
       </div>
     );
