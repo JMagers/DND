@@ -1,6 +1,25 @@
 class CharacterTemplatesController < ApplicationController
   before_action :set_character_template, only: [:show, :edit, :update, :destroy]
 
+  # FILTER
+  def filter
+    # filter stuff
+  end
+
+  # SORT
+  def sort
+    method = params[:method].to_sym
+    direction = params[:direction].to_sym
+    if [:character_name, :num_forks, :created_at].include? method
+      character_templates = CharacterTemplate.order(method => direction)
+    else
+      character_templates = CharacterTemplate.all
+    end
+    ct_summaries = character_templates.map {|ct| ct.get_summary()}
+
+    render json: ct_summaries
+  end
+
   # GET /character_templates
   # GET /character_templates.json
   def index
