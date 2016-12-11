@@ -6,9 +6,11 @@ class CharacterTemplate < ApplicationRecord
       id: self.id,
       character_name: self.character_name,
       num_forks: self.num_forks,
-      show_url: character_template_path(self)
-      #num_likes: self.num_likes,
-      #name of user
+      show_url: character_template_path(self),
+      edit_url: edit_character_template_path(self),
+      destroy_url: character_template_path(self),
+      user_id: self.user_id,
+      username: User.find(self.user_id).username
     }
   end
 

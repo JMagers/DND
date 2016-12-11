@@ -1,7 +1,8 @@
 var CharacterTemplatesListContainer = React.createClass({
   propTypes: {
     url: React.PropTypes.string.isRequired,
-    params: React.PropTypes.object
+    params: React.PropTypes.object,
+    cur_user_id: React.PropTypes.number.isRequired
   },
 
   getDefaultProps: function () {
@@ -23,7 +24,7 @@ var CharacterTemplatesListContainer = React.createClass({
       if (i > 0) {
         url += '&'
       }
-      url += param + '=' + params[param]; 
+      url += param + '=' + params[param];
       i++;
     }
     $.ajax({
@@ -54,14 +55,13 @@ var CharacterTemplatesListContainer = React.createClass({
     }
     this.loadDataFromServer(nextProps);
   },
-  
 
   render: function () {
     var characterTemplatesList;
     if (this.state.data == null) {
       characterTemplatesList = <h6>Loading Character Templates...</h6>;
     } else {
-      characterTemplatesList = <CharacterTemplatesList data={this.state.data} />;
+      characterTemplatesList = <CharacterTemplatesList data={this.state.data} cur_user_id={this.props.cur_user_id} />;
     }
     return (
       <div>

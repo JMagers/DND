@@ -1,7 +1,8 @@
 var CharacterTemplatesIndex = React.createClass({
   propTypes: {
     jsonUrl: React.PropTypes.string.isRequired,
-    user_id: React.PropTypes.string
+    cur_user_id: React.PropTypes.number.isRequired,
+    user_id: React.PropTypes.number
   },
 
   getInitialState: function () {
@@ -30,12 +31,11 @@ var CharacterTemplatesIndex = React.createClass({
     var params = {method: this.state.method, direction: this.state.direction, user_id: this.props.user_id};
     return (
       <div>
-        <h1>Character Templates</h1>
         <h6>Sort by:</h6>
         <a className="button" id="most-recent-button" onClick={this.handleClick}>Most Recent</a>
         <a className="button" id="character-name-button" onClick={this.handleClick}>Character Name</a>
         <a className="button" id="num-forks-button" onClick={this.handleClick}>Number of Forks</a>
-        <CharacterTemplatesListContainer url={jsonUrl} params={params} />
+        <CharacterTemplatesListContainer url={jsonUrl} params={params} cur_user_id={this.props.cur_user_id} />
       </div>
     );
   }

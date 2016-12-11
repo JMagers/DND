@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= react_component 'CharacterTemplatesIndex', { jsonUrl: url_for(action: 'sort'), user_id: @user_id_filter } %>
+<% if @given_user != nil %>
+  <h1><%= "#{@given_user.username}'s Characters" %></h1>
+<% else %>
+  <h1>All Characters</h1>
+<% end %>
+<%= react_component 'CharacterTemplatesIndex', { jsonUrl: url_for(action: 'sort'), user_id: @user_id_filter, cur_user_id: current_user.id } %>
 
 <%= link_to 'New Character Template', new_character_template_path %>

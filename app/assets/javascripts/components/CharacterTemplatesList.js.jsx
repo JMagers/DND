@@ -3,7 +3,7 @@ function CharacterTemplatesList (props) {
     var key = 'characterTemplateSummary' + characterTemplate.id;
     return (
       <li key={key}>
-        <CharacterTemplateSummary data={characterTemplate} />
+        <CharacterTemplateSummary data={characterTemplate} cur_user_id={props.cur_user_id} />
       </li>
     );
   });
@@ -15,5 +15,6 @@ function CharacterTemplatesList (props) {
 }
 
 CharacterTemplatesList.propTypes = {
-  data: React.PropTypes.object.isRequired
+  data: React.PropTypes.object.isRequired,
+  cur_user_id: React.PropTypes.number.isRequired
 };

@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to "Fork This Template", new_character_template_path(forked_from: @character_template.id) %>
+<% if @character_template.user_id == current_user.id %>
+  | <%= link_to 'Edit', edit_character_template_path(@character_template) %>
+  | <%= link_to 'Delete', character_template_path(@character_template), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
 <%= react_component('CharacterTemplateContainer', url: @json_url) %>
 
-<%= link_to 'Edit', edit_character_template_path(@character_template) %> |
 <%= link_to 'Back', character_templates_path %>

@@ -27,11 +27,13 @@ class CharacterTemplatesController < ApplicationController
   # GET /character_templates
   # GET /character_templates.json
   def index
+    @given_user = nil
     @user_id_filter = nil
     if params.key?(:user_id)
       user_id = params[:user_id]
       if User.exists?(user_id)
-        @user_id_filter = user_id
+        @user_id_filter = user_id.to_i
+        @given_user = User.find(user_id)
       end
     end
   end
