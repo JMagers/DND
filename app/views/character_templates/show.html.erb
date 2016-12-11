@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to "Fork This Template", new_character_template_path(forked_from: @character_template.id) %>
+<%= link_to "Fork This Character", new_character_template_path(forked_from: @character_template.id), class: "button", style: "color:white" %>
 <% if @character_template.user_id == current_user.id %>
-  | <%= link_to 'Edit', edit_character_template_path(@character_template) %>
-  | <%= link_to 'Delete', character_template_path(@character_template), method: :delete, data: {confirm: "Are you sure?"} %>
+  <div style="float: right">
+    <%= link_to 'Edit', edit_character_template_path(@character_template), class: "success button", style: "color:white" %>
+    <%= link_to 'Delete', character_template_path(@character_template), method: :delete, data: {confirm: "Are you sure?"}, class: "alert button", style: "color:white" %>
+  </div>
+<% end %>
+<% if @character_template.forked_from != nil %>
+  <% if CharacterTemplate.exists?(@character_template.forked_from) %>
+    <% original_template = CharacterTemplate.find(@character_template.forked_from) %>
+    <h6>This character was forked from "<%= link_to original_template.character_name, character_template_path(original_template) %>"</h6>
+  <% end %>
 <% end %>
 
 <%= react_component('CharacterTemplateContainer', url: @json_url) %>

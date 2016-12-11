@@ -21,7 +21,7 @@ var Traits = React.createClass({
     });
     return (
       <div>
-        <h1>Traits</h1>
+        <h3>Traits</h3>
         <ul>
           {traits}
         </ul>

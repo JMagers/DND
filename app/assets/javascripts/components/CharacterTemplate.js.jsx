@@ -7,12 +7,9 @@ var CharacterTemplate = React.createClass({
     var data = this.props.data;
     return (
       <div>
-        <h1>JSON object</h1>
-        <p>{JSON.stringify(data)}</p>
+        <h1><u>{data.character_name}</u></h1>
         <ul>
-          <li><strong>Forked From: </strong>{data.forked_from}</li>
-          <li><strong>Forks: </strong>{data.num_forks}</li>
-          <li><strong>Name: </strong>{data.character_name}</li>
+          <li><strong>Number of Forks: </strong>{data.num_forks}</li>
           <li><strong>Class: </strong>{data.character_class}</li>
           <li><strong>Background: </strong>{data.background}</li>
           <li><strong>Race: </strong>{data.race}</li>

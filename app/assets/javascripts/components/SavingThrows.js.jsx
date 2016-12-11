@@ -23,7 +23,7 @@ var SavingThrows = React.createClass({
     });
     return (
       <div>
-        <h1>Saving Throws</h1>
+        <h3>Saving Throws</h3>
         <ul>
           {savingThrows}
         </ul>

@@ -23,7 +23,7 @@ var Abilities = React.createClass({
     });
     return (
       <div>
-        <h1>Abilites</h1>
+        <h3>Abilites</h3>
         <ul>
           {abilities}
         </ul>

@@ -35,7 +35,7 @@ var Skills = React.createClass({
     });
     return (
       <div>
-        <h1>Skills</h1>
+        <h3>Skills</h3>
         <ul>
           {skills}
         </ul>

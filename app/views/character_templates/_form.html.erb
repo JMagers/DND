@@ -12,7 +12,7 @@
   <% end %>
 
   <% if CharacterTemplate.count > 0 %>
-    <%= link_to "Fork From Random Template", new_character_template_path(forked_from: 'random') %>
+    <%= link_to "Fork From Random Template", new_character_template_path(forked_from: 'random'), class: "button", style: "color:white" %>
   <% end %>
 
   <div class="field">
