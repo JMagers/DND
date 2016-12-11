@@ -1,6 +1,7 @@
 class CharacterTemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_character_template, only: [:show, :edit, :update, :destroy]
+  before_action :user_owns_it, only: [:edit, :update, :destroy]
 
   # SORT
   def sort
@@ -109,6 +110,12 @@ class CharacterTemplatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_character_template
       @character_template = CharacterTemplate.find(params[:id])
+    end
+
+    def user_owns_it
+      if current_user.id != @character_template.user_id
+        redirect_to character_template_path(@character_template)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
