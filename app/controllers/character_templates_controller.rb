@@ -1,4 +1,5 @@
 class CharacterTemplatesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_character_template, only: [:show, :edit, :update, :destroy]
 
   # FILTER

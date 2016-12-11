@@ -10,6 +10,14 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
+    <header class="header">
+      <h1 class="headline">DND Generator  <small>5th Edition</small></h1>
+      <ul class="header-subnav">
+        <li><%= link_to 'Characters', character_templates_path %></li>
+        <li><%= link_to 'New Character', new_character_template_path %></li>
+        <li><%= link_to 'Sign-Out', destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </header>
 
   <body>
 
