@@ -1,6 +1,7 @@
 var CharacterTemplatesIndex = React.createClass({
   propTypes: {
-    jsonUrl: React.PropTypes.string.isRequired
+    jsonUrl: React.PropTypes.string.isRequired,
+    user_id: React.PropTypes.string
   },
 
   getInitialState: function () {
@@ -26,7 +27,7 @@ var CharacterTemplatesIndex = React.createClass({
 
   render: function () {
     var jsonUrl = this.props.jsonUrl;
-    var params = {method: this.state.method, direction: this.state.direction};
+    var params = {method: this.state.method, direction: this.state.direction, user_id: this.props.user_id};
     return (
       <div>
         <h1>Character Templates</h1>

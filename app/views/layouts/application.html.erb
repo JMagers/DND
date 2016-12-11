@@ -13,9 +13,12 @@
     <header class="header">
       <h1 class="headline">DND Generator  <small>5th Edition</small></h1>
       <ul class="header-subnav">
-        <li><%= link_to 'Characters', character_templates_path %></li>
-        <li><%= link_to 'New Character', new_character_template_path %></li>
-        <li><%= link_to 'Sign-Out', destroy_user_session_path, method: :delete %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'All Characters', character_templates_path %></li>
+          <li><%= link_to 'My Characters', character_templates_path(user_id: current_user.id) %></li>
+          <li><%= link_to 'New Character', new_character_template_path %></li>
+          <li><%= link_to 'Sign-Out', destroy_user_session_path, method: :delete %></li>
+        <% end %>
       </ul>
     </header>
 

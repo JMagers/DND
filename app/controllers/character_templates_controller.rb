@@ -5,18 +5,19 @@ class CharacterTemplatesController < ApplicationController
 
   # SORT
   def sort
-    #if params.key?(:user_id)
-      #user_id = params[:user_id]
-      #if User.exists?(user_id)
-        #character_templates = CharacterTemplate.where(user_id: user_id)
-      #end
-    #end
+    # Filter
+    character_templates = CharacterTemplate.all
+    if params.key?(:user_id)
+      user_id = params[:user_id]
+      if User.exists?(user_id)
+        character_templates = CharacterTemplate.where(user_id: user_id)
+      end
+    end
+    # Sort
     method = params[:method].to_sym
     direction = params[:direction].to_sym
     if [:character_name, :num_forks, :created_at].include? method
-      character_templates = CharacterTemplate.order(method => direction)
-    else
-      character_templates = CharacterTemplate.all
+      character_templates = character_templates.order(method => direction)
     end
     ct_summaries = character_templates.map {|ct| ct.get_summary()}
 
@@ -26,7 +27,13 @@ class CharacterTemplatesController < ApplicationController
   # GET /character_templates
   # GET /character_templates.json
   def index
-    @character_templates = CharacterTemplate.all
+    @user_id_filter = nil
+    if params.key?(:user_id)
+      user_id = params[:user_id]
+      if User.exists?(user_id)
+        @user_id_filter = user_id
+      end
+    end
   end
 
   # GET /character_templates/1
