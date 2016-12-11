@@ -2,13 +2,14 @@ class CharacterTemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_character_template, only: [:show, :edit, :update, :destroy]
 
-  # FILTER
-  def filter
-    # filter stuff
-  end
-
   # SORT
   def sort
+    #if params.key?(:user_id)
+      #user_id = params[:user_id]
+      #if User.exists?(user_id)
+        #character_templates = CharacterTemplate.where(user_id: user_id)
+      #end
+    #end
     method = params[:method].to_sym
     direction = params[:direction].to_sym
     if [:character_name, :num_forks, :created_at].include? method
@@ -36,14 +37,15 @@ class CharacterTemplatesController < ApplicationController
   # GET /character_templates/new
   def new
     forked_from = params[:forked_from]
+    @original_template = nil
     if forked_from == 'random'
-      original_template = CharacterTemplate.order('RANDOM()').first
+      @original_template = CharacterTemplate.order('RANDOM()').first
     elsif CharacterTemplate.exists?(forked_from)
-      original_template = CharacterTemplate.find(forked_from)
+      @original_template = CharacterTemplate.find(forked_from)
     end
-    if original_template != nil
-      @character_template = original_template.dup
-      @character_template.forked_from = original_template.id
+    if @original_template != nil
+      @character_template = @original_template.dup
+      @character_template.forked_from = @original_template.id
     else
       @character_template = CharacterTemplate.new()
     end
@@ -57,6 +59,9 @@ class CharacterTemplatesController < ApplicationController
   # POST /character_templates.json
   def create
     @character_template = CharacterTemplate.new(character_template_params)
+    if user_signed_in?
+      @character_template.user_id = current_user.id
+    end
 
     respond_to do |format|
       if @character_template.save
@@ -108,6 +113,6 @@ class CharacterTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_template_params
-      params.require(:character_template).permit(:ability_strength_value, :ability_strength_mod, :ability_dexterity_value, :ability_dexterity_mod, :ability_constitution_value, :ability_constitution_mod, :ability_intelligence_value, :ability_intelligence_mod, :ability_wisdom_value, :ability_wisdom_mod, :ability_charisma_value, :ability_charisma_mod, :trait_personality, :trait_ideals, :trait_bonds, :trait_flaws, :character_name, :character_class, :background, :race, :alignment, :passive_perception, :armor_class, :initiative, :speed, :other_proficiencies_languages, :hit_point_max, :hit_dice, :features_traits, :proficiency_bonus, :saving_throw_strength_value, :saving_throw_strength_bool, :saving_throw_dexterity_value, :saving_throw_dexterity_bool, :saving_throw_constitution_value, :saving_throw_constitution_bool, :saving_throw_intelligence_value, :saving_throw_intelligence_bool, :saving_throw_wisdom_value, :saving_throw_wisdom_bool, :saving_throw_charisma_value, :saving_throw_charisma_bool, :skills_acrobatics_value, :skills_acrobatics_bool, :skills_animal_handling_value, :skills_animal_handling_bool, :skills_arcana_value, :skills_arcana_bool, :skills_athletics_value, :skills_athletics_bool, :skills_deception_value, :skills_deception_bool, :skills_history_value, :skills_history_bool, :skills_insight_value, :skills_insight_bool, :skills_intimidation_value, :skills_intimidation_bool, :skills_investigation_value, :skills_investigation_bool, :skills_medicine_value, :skills_medicine_bool, :skills_nature_value, :skills_nature_bool, :skills_perception_value, :skills_perception_bool, :skills_performance_value, :skills_performance_bool, :skills_persuasion_value, :skills_persuasion_bool, :skills_religion_value, :skills_religion_bool, :skills_sleight_of_hand_value, :skills_sleight_of_hand_bool, :skills_stealth_value, :skills_stealth_bool, :skills_survival_value, :skills_survival_bool, :private, :user_id, :forked_from)
+      params.require(:character_template).permit(:ability_strength_value, :ability_strength_mod, :ability_dexterity_value, :ability_dexterity_mod, :ability_constitution_value, :ability_constitution_mod, :ability_intelligence_value, :ability_intelligence_mod, :ability_wisdom_value, :ability_wisdom_mod, :ability_charisma_value, :ability_charisma_mod, :trait_personality, :trait_ideals, :trait_bonds, :trait_flaws, :character_name, :character_class, :background, :race, :alignment, :passive_perception, :armor_class, :initiative, :speed, :other_proficiencies_languages, :hit_point_max, :hit_dice, :features_traits, :proficiency_bonus, :saving_throw_strength_value, :saving_throw_strength_bool, :saving_throw_dexterity_value, :saving_throw_dexterity_bool, :saving_throw_constitution_value, :saving_throw_constitution_bool, :saving_throw_intelligence_value, :saving_throw_intelligence_bool, :saving_throw_wisdom_value, :saving_throw_wisdom_bool, :saving_throw_charisma_value, :saving_throw_charisma_bool, :skills_acrobatics_value, :skills_acrobatics_bool, :skills_animal_handling_value, :skills_animal_handling_bool, :skills_arcana_value, :skills_arcana_bool, :skills_athletics_value, :skills_athletics_bool, :skills_deception_value, :skills_deception_bool, :skills_history_value, :skills_history_bool, :skills_insight_value, :skills_insight_bool, :skills_intimidation_value, :skills_intimidation_bool, :skills_investigation_value, :skills_investigation_bool, :skills_medicine_value, :skills_medicine_bool, :skills_nature_value, :skills_nature_bool, :skills_perception_value, :skills_perception_bool, :skills_performance_value, :skills_performance_bool, :skills_persuasion_value, :skills_persuasion_bool, :skills_religion_value, :skills_religion_bool, :skills_sleight_of_hand_value, :skills_sleight_of_hand_bool, :skills_stealth_value, :skills_stealth_bool, :skills_survival_value, :skills_survival_bool, :private, :forked_from)
     end
 end

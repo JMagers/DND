@@ -16,8 +16,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :forked_from %>
-    <%= f.number_field :forked_from %>
+    <%= f.label :character_name %>
+    <%= f.text_field :character_name %>
   </div>
 
   <div class="field">
@@ -98,11 +98,6 @@
   <div class="field">
     <%= f.label :trait_flaws %>
     <%= f.text_area :trait_flaws %>
-  </div>
-
-  <div class="field">
-    <%= f.label :character_name %>
-    <%= f.text_field :character_name %>
   </div>
 
   <div class="field">
@@ -415,10 +410,7 @@
     <%= f.check_box :private %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
+  <%= f.hidden_field :forked_from, value: @character_template.forked_from %>
 
   <div class="actions">
     <%= f.submit %>
