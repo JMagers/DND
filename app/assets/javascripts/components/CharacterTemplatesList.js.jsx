@@ -8,9 +8,11 @@ function CharacterTemplatesList (props) {
     );
   });
   return (
-    <ul>
-      {characterTemplatesList}
-    </ul>
+    <div className="character_templates">
+      <ul>
+        {characterTemplatesList}
+      </ul>
+    </div>
   );
 }
 

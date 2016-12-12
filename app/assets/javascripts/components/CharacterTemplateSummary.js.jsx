@@ -5,17 +5,17 @@ function CharacterTemplateSummary (props) {
   if (cur_user_id == data.user_id) {
     var modify_buttons = (
       <li>
-        <a href={data.edit_url}>Edit </a>
-        <a rel="nofollow" data-method="delete" href={data.destroy_url}>Delete</a>
+        <a href={data.show_url}>Show</a> | <a href={data.edit_url}>Edit</a>
       </li>
     );
   }
   return (
-    <div>
-      <a href={data.show_url}><strong>{data.character_name}</strong></a>
+    <div className="callout primary">
+      <h2><a href={data.show_url}><strong>{data.character_name}</strong></a></h2>
       <ul>
         <li><strong>Author: </strong>{data.username}</li>
         <li><strong>Number of forks: </strong>{data.num_forks}</li>
+        <li>{data.created_at}</li>
         {modify_buttons}
       </ul>
     </div>

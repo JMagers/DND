@@ -10,7 +10,8 @@ class CharacterTemplate < ApplicationRecord
       edit_url: edit_character_template_path(self),
       destroy_url: character_template_path(self),
       user_id: self.user_id,
-      username: User.find(self.user_id).username
+      username: User.find(self.user_id).username,
+      created_at: self.created_at
     }
   end
 

@@ -1,3 +1,21 @@
 // Place all the styles related to the CharacterTemplates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#character_templates_index {
+  .button {
+    margin: 5px;
+  }
+}
+
+.character_templates {
+  ul {
+    list-style-type: none;
+  }
+}
+
+.character_template_summary {
+}
+
+.character_template_settings {
+}
