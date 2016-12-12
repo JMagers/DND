@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211050943) do
+ActiveRecord::Schema.define(version: 20161212223809) do
 
   create_table "character_templates", force: :cascade do |t|
     t.integer  "ability_strength_value"
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20161211050943) do
     t.boolean  "skills_stealth_bool"
     t.integer  "skills_survival_value"
     t.boolean  "skills_survival_bool"
-    t.boolean  "private"
     t.integer  "user_id",                                     null: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
