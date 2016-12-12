@@ -205,12 +205,12 @@ function formatTemplateData(data) {
     'skills_survival_bool'
   ]
 
-  for (let i in deleteList) {
+  for (var i = 0; i < deleteList.length; i++) {
     var attrName = deleteList[i];
     delete data[attrName];
   }
 
-  for (let attr in data) {
+  for (var attr = 0; attr < data.length; attr++) {
     newData[attr] = data[attr];
   }
 
