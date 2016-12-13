@@ -16,6 +16,7 @@ var CharacterTemplate = React.createClass({
               <div style={{paddingRight: "8px"}}>
                 <p style={{marginTop: "1em"}}><strong><big>#Forks: {data.num_forks}</big></strong></p>
               </div>
+              <p><a href={"/character_templates?forked_from=" + data.id}>view all forks</a></p>
             </div>
           </div>
         </div>

@@ -10,7 +10,13 @@ class CharacterTemplatesController < ApplicationController
     if params.key?(:user_id)
       user_id = params[:user_id]
       if User.exists?(user_id)
-        character_templates = CharacterTemplate.where(user_id: user_id)
+        character_templates = character_templates.where(user_id: user_id)
+      end
+    end
+    if params.key?(:forked_from)
+      forked_from = params[:forked_from]
+      if CharacterTemplate.exists?(forked_from)
+        character_templates = character_templates.where(forked_from: forked_from)
       end
     end
     # Sort
@@ -39,11 +45,20 @@ class CharacterTemplatesController < ApplicationController
   def index
     @given_user = nil
     @user_id_filter = nil
+    @forked_from_filter = nil
+    @forked_from_name = nil
     if params.key?(:user_id)
       user_id = params[:user_id]
       if User.exists?(user_id)
         @user_id_filter = user_id.to_i
         @given_user = User.find(user_id)
+      end
+    end
+    if params.key?(:forked_from)
+      forked_from = params[:forked_from]
+      @forked_from_filter = forked_from.to_i
+      if CharacterTemplate.exists?(@forked_from_filter)
+        @forked_from_name = CharacterTemplate.find(@forked_from_filter).character_name
       end
     end
   end
