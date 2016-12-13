@@ -20,7 +20,7 @@ var CharacterTemplate = React.createClass({
           </div>
         </div>
         <div className="row">
-          <div className="shrink columns">
+          <div className="columns">
             <ul>
               <li><strong>Class: </strong>{data.character_class}</li>
               <li><strong>Background: </strong>{data.background}</li>
@@ -36,7 +36,7 @@ var CharacterTemplate = React.createClass({
               <li><strong>Proficiency Bonus: </strong>{data.proficiency_bonus}</li>
             </ul>
           </div>
-          <div className="columns">
+          <div className="small-8 columns">
             <img src={data.picture_url} />
           </div>
         </div>
