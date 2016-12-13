@@ -33,10 +33,16 @@ var CharacterTemplate = React.createClass({
             <img src={data.picture_url} />
           </div>
         </div>
-        <Abilities data={data.abilities} />
-        <Traits data={data.traits} />
-        <SavingThrows data={data.saving_throws} />
-        <Skills data={data.skills} />
+        <div className="row">
+          <div className="small-5 columns">
+            <Abilities data={data.abilities} />
+            <SavingThrows data={data.saving_throws} />
+            <Traits data={data.traits} />
+          </div>
+          <div className="small-5 columns">
+            <Skills data={data.skills} />
+          </div>
+        </div>
       </div>
     );
   }

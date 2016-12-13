@@ -24,9 +24,11 @@ var Abilities = React.createClass({
     return (
       <div>
         <h3>Abilites</h3>
-        <ul>
-          {abilities}
-        </ul>
+        <div className="callout primary">
+          <ul>
+            {abilities}
+          </ul>
+        </div>
       </div>
     );
   }

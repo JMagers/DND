@@ -24,9 +24,11 @@ var SavingThrows = React.createClass({
     return (
       <div>
         <h3>Saving Throws</h3>
-        <ul>
-          {savingThrows}
-        </ul>
+        <div className="callout primary">
+          <ul>
+            {savingThrows}
+          </ul>
+        </div>
       </div>
     );
   }

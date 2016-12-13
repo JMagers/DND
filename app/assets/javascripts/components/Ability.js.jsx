@@ -11,8 +11,8 @@ var Ability = React.createClass({
       <div>
         <h5>{name}</h5>
         <ul>
-          <li><strong>value: </strong>{attributes.value}</li>
-          <li><strong>mod: </strong>{attributes.mod}</li>
+          <li><strong>score: </strong>{attributes.value}</li>
+          <li><strong>modifier: </strong>{attributes.mod}</li>
         </ul>
       </div>
     );

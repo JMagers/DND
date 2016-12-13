@@ -12,7 +12,7 @@ var SavingThrow = React.createClass({
         <h5>{name}</h5>
         <ul>
           <li><strong>value: </strong>{attributes.value}</li>
-          <li><strong>bool: </strong>{attributes.bool.toString()}</li>
+          <li><strong>proficient: </strong>{attributes.bool.toString()}</li>
         </ul>
       </div>
     );

@@ -20,11 +20,17 @@ var Traits = React.createClass({
       );
     });
     return (
-      <div>
+      <div className="traits_data">
         <h3>Traits</h3>
-        <ul>
-          {traits}
-        </ul>
+        <div className="row">
+          <div className="shrink columns">
+            <div className="callout primary">
+              <ul>
+                {traits}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

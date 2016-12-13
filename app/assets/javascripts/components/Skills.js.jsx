@@ -36,9 +36,11 @@ var Skills = React.createClass({
     return (
       <div>
         <h3>Skills</h3>
-        <ul>
-          {skills}
-        </ul>
+        <div className="callout primary">
+          <ul>
+            {skills}
+          </ul>
+        </div>
       </div>
     );
   }
