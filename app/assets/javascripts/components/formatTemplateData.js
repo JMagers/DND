@@ -210,7 +210,7 @@ function formatTemplateData(data) {
     delete data[attrName];
   }
 
-  for (var attr = 0; attr < data.length; attr++) {
+  for (var attr in data) {
     newData[attr] = data[attr];
   }
 
