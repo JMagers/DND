@@ -11,8 +11,16 @@ class CharacterTemplate < ApplicationRecord
       destroy_url: character_template_path(self),
       user_id: self.user_id,
       username: User.find(self.user_id).username,
+      picture_url: self.picture_url,
       created_at: self.created_at
     }
+  end
+
+  def get_all
+    info = self.attributes.deep_dup
+    user = User.find(self.user_id)
+    info[:username] = user.username
+    return info
   end
 
   def character_name_valid?

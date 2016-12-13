@@ -10,7 +10,7 @@
 <% if @character_template.forked_from != nil %>
   <% if CharacterTemplate.exists?(@character_template.forked_from) %>
     <% original_template = CharacterTemplate.find(@character_template.forked_from) %>
-    <h6>This character was forked from "<%= link_to original_template.character_name, character_template_path(original_template) %>"</h6>
+    <h6><em>This character was forked from <strong><%= link_to original_template.character_name, character_template_path(original_template) %></strong></em></h6>
   <% end %>
 <% end %>
 

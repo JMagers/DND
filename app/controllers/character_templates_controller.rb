@@ -24,6 +24,16 @@ class CharacterTemplatesController < ApplicationController
     render json: ct_summaries
   end
 
+  def character_data
+    if params.key?(:id)
+      character_template_id = params[:id]
+      if CharacterTemplate.exists?(character_template_id)
+        character_template = CharacterTemplate.find(character_template_id)
+        render json: character_template.get_all
+      end
+    end
+  end
+
   # GET /character_templates
   # GET /character_templates.json
   def index
@@ -41,7 +51,7 @@ class CharacterTemplatesController < ApplicationController
   # GET /character_templates/1
   # GET /character_templates/1.json
   def show
-    @json_url = character_template_path(@character_template, format: :json)
+    @json_url = url_for(action: "character_data") + "?id=#{@character_template.id}"
   end
 
   # GET /character_templates/new
@@ -129,6 +139,6 @@ class CharacterTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_template_params
-      params.require(:character_template).permit(:ability_strength_value, :ability_strength_mod, :ability_dexterity_value, :ability_dexterity_mod, :ability_constitution_value, :ability_constitution_mod, :ability_intelligence_value, :ability_intelligence_mod, :ability_wisdom_value, :ability_wisdom_mod, :ability_charisma_value, :ability_charisma_mod, :trait_personality, :trait_ideals, :trait_bonds, :trait_flaws, :character_name, :character_class, :background, :race, :alignment, :passive_perception, :armor_class, :initiative, :speed, :other_proficiencies_languages, :hit_point_max, :hit_dice, :features_traits, :proficiency_bonus, :saving_throw_strength_value, :saving_throw_strength_bool, :saving_throw_dexterity_value, :saving_throw_dexterity_bool, :saving_throw_constitution_value, :saving_throw_constitution_bool, :saving_throw_intelligence_value, :saving_throw_intelligence_bool, :saving_throw_wisdom_value, :saving_throw_wisdom_bool, :saving_throw_charisma_value, :saving_throw_charisma_bool, :skills_acrobatics_value, :skills_acrobatics_bool, :skills_animal_handling_value, :skills_animal_handling_bool, :skills_arcana_value, :skills_arcana_bool, :skills_athletics_value, :skills_athletics_bool, :skills_deception_value, :skills_deception_bool, :skills_history_value, :skills_history_bool, :skills_insight_value, :skills_insight_bool, :skills_intimidation_value, :skills_intimidation_bool, :skills_investigation_value, :skills_investigation_bool, :skills_medicine_value, :skills_medicine_bool, :skills_nature_value, :skills_nature_bool, :skills_perception_value, :skills_perception_bool, :skills_performance_value, :skills_performance_bool, :skills_persuasion_value, :skills_persuasion_bool, :skills_religion_value, :skills_religion_bool, :skills_sleight_of_hand_value, :skills_sleight_of_hand_bool, :skills_stealth_value, :skills_stealth_bool, :skills_survival_value, :skills_survival_bool, :forked_from)
+      params.require(:character_template).permit(:ability_strength_value, :ability_strength_mod, :ability_dexterity_value, :ability_dexterity_mod, :ability_constitution_value, :ability_constitution_mod, :ability_intelligence_value, :ability_intelligence_mod, :ability_wisdom_value, :ability_wisdom_mod, :ability_charisma_value, :ability_charisma_mod, :trait_personality, :trait_ideals, :trait_bonds, :trait_flaws, :character_name, :character_class, :background, :race, :alignment, :passive_perception, :armor_class, :initiative, :speed, :other_proficiencies_languages, :hit_point_max, :hit_dice, :features_traits, :proficiency_bonus, :saving_throw_strength_value, :saving_throw_strength_bool, :saving_throw_dexterity_value, :saving_throw_dexterity_bool, :saving_throw_constitution_value, :saving_throw_constitution_bool, :saving_throw_intelligence_value, :saving_throw_intelligence_bool, :saving_throw_wisdom_value, :saving_throw_wisdom_bool, :saving_throw_charisma_value, :saving_throw_charisma_bool, :skills_acrobatics_value, :skills_acrobatics_bool, :skills_animal_handling_value, :skills_animal_handling_bool, :skills_arcana_value, :skills_arcana_bool, :skills_athletics_value, :skills_athletics_bool, :skills_deception_value, :skills_deception_bool, :skills_history_value, :skills_history_bool, :skills_insight_value, :skills_insight_bool, :skills_intimidation_value, :skills_intimidation_bool, :skills_investigation_value, :skills_investigation_bool, :skills_medicine_value, :skills_medicine_bool, :skills_nature_value, :skills_nature_bool, :skills_perception_value, :skills_perception_bool, :skills_performance_value, :skills_performance_bool, :skills_persuasion_value, :skills_persuasion_bool, :skills_religion_value, :skills_religion_bool, :skills_sleight_of_hand_value, :skills_sleight_of_hand_bool, :skills_stealth_value, :skills_stealth_bool, :skills_survival_value, :skills_survival_bool, :forked_from, :picture_url)
     end
 end

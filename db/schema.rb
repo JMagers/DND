@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212223809) do
+ActiveRecord::Schema.define(version: 20161213030528) do
 
   create_table "character_templates", force: :cascade do |t|
     t.integer  "ability_strength_value"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20161212223809) do
     t.datetime "updated_at",                                  null: false
     t.integer  "forked_from"
     t.integer  "num_forks",                       default: 0
+    t.string   "picture_url"
   end
 
   create_table "users", force: :cascade do |t|

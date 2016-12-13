@@ -15,7 +15,28 @@
 }
 
 .character_template_summary {
+  img {
+    max-height: 200px;
+    width: auto;
+  }
+  .callout {
+    max-width: 600px;
+  }
 }
 
 .character_template_settings {
+  p {
+    margin: 0;
+    margin-left: 10px;
+  }
+  .row {
+    margin-left: 0;
+  }
+  img {
+    max-height: 300px;
+  }
+  li {
+    font-size: 1.25em;
+    margin: 0.5em;
+  }
 }
