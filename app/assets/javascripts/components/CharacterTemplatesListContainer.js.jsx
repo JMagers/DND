@@ -14,9 +14,12 @@ var CharacterTemplatesListContainer = React.createClass({
   },
 
   loadDataFromServer: function (props) {
+    if (props === undefined) {
+      props = this.props;
+    }
     var url = props.url;
-    var oldData = this.state.data;
     var params = props.params;
+    var oldData = this.state.data;
     // Add parameters to url
     url += '?';
     var i = 0;
@@ -46,7 +49,7 @@ var CharacterTemplatesListContainer = React.createClass({
 
   componentDidMount: function() {
     this.loadDataFromServer(this.props);
-    setInterval(this.loadDataFromServer(this.props), 2000);
+    setInterval(this.loadDataFromServer, 2000);
   },
 
   componentWillReceiveProps: function (nextProps) {
