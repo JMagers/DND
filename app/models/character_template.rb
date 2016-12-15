@@ -20,6 +20,14 @@ class CharacterTemplate < ApplicationRecord
     info = self.attributes.deep_dup
     user = User.find(self.user_id)
     info[:username] = user.username
+    if (CharacterTemplate.exists?(self.forked_from))
+      forked_from_character = CharacterTemplate.find(self.forked_from)
+      info[:forked_from_url] = character_template_path(forked_from_character)
+      info[:forked_from_name] = forked_from_character.character_name
+    else
+      info[:forked_from_url] = nil
+      info[:forked_from_name] = nil
+    end
     return info
   end
 

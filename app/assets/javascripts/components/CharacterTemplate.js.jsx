@@ -5,8 +5,13 @@ var CharacterTemplate = React.createClass({
 
   render: function() {
     var data = this.props.data;
+    var forked_from_message = null;
+    if (data.forked_from_url != null) {
+      forked_from_message = <h6><em>This character was forked from <strong><a href={data.forked_from_url}>{data.forked_from_name}</a></strong></em></h6>;
+    }
     return (
       <div className="character_template_settings">
+        {forked_from_message}
         <h1><u>{data.character_name}</u></h1>
         <h3>by <a href={"/character_templates?user_id=" + data.user_id}><strong>{data.username}</strong></a></h3>
         <p><a href={"/character_templates?user_id=" + data.user_id}>view all by {data.username}</a></p>

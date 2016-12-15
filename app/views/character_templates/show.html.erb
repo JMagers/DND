@@ -7,12 +7,6 @@
     <%= link_to 'Delete', character_template_path(@character_template), method: :delete, data: {confirm: "Are you sure?"}, class: "alert button", style: "color:white" %>
   </div>
 <% end %>
-<% if @character_template.forked_from != nil %>
-  <% if CharacterTemplate.exists?(@character_template.forked_from) %>
-    <% original_template = CharacterTemplate.find(@character_template.forked_from) %>
-    <h6><em>This character was forked from <strong><%= link_to original_template.character_name, character_template_path(original_template) %></strong></em></h6>
-  <% end %>
-<% end %>
 
 <%= react_component('CharacterTemplateContainer', url: @json_url) %>
 
