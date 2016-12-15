@@ -10,7 +10,10 @@ var CharacterTemplatesListContainer = React.createClass({
   },
 
   getInitialState: function () {
-    return {data: null};
+    return {
+      data: null,
+      interval: null
+    };
   },
 
   loadDataFromServer: function (props) {
@@ -49,7 +52,11 @@ var CharacterTemplatesListContainer = React.createClass({
 
   componentDidMount: function() {
     this.loadDataFromServer(this.props);
-    setInterval(this.loadDataFromServer, 2000);
+    this.state.interval = setInterval(this.loadDataFromServer, 2000);
+  },
+
+  componentWillUnmount: function() {
+    clearInterval(this.state.interval)
   },
 
   componentWillReceiveProps: function (nextProps) {

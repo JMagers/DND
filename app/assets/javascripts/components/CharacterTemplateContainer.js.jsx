@@ -4,7 +4,10 @@ var CharacterTemplateContainer = React.createClass({
   },
 
   getInitialState: function() {
-    return {data: null};
+    return {
+      data: null,
+      interval: null
+    };
   },
 
   loadDataFromServer: function() {
@@ -29,7 +32,11 @@ var CharacterTemplateContainer = React.createClass({
 
   componentDidMount: function() {
     this.loadDataFromServer();
-    setInterval(this.loadDataFromServer, 2000);
+    this.state.interval = setInterval(this.loadDataFromServer, 2000);
+  },
+
+  componentWillUnmount: function() {
+    clearInterval(this.state.interval)
   },
 
   render: function() {
