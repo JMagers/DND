@@ -39,3 +39,20 @@ There are 2 main ways to create a character:
      * Go to "view/show" page of character you like and click "Fork this character" in upper left corner.
    * Fork from random character:
      * Click on "NEW CHARACTER" in header. Then click "Fork from random character" in the upper left hand corner of the form.
+
+## Important file locations
+If you are unfamiliar with Ruby on Rails, here are the locations of the most important files:
+* Controllers
+  * app/controllers
+* Views/Templates
+  * app/views
+* Router/urls
+  * config/routes.rb
+* Database schema
+  * db/schema.rb
+* Models
+  * app/models
+* React code
+  * app/assets/javascripts/components
+* CSS
+  * app/assets/stylesheets
